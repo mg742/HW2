@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- title for web page -->
+    <title>HTML form validation </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <script> is used for javascript -->
+    <script>
+        //function to validate form
+        function validate()
+        {
+            //taking first name entered by user
+            var firstName=document.getElementById("txtFirstName").value;
+            //taking last name entered by user
+            var lastName=document.getElementById("txtLastName").value;
+            //taking email entered by user
+            var email=document.getElementById("txtEmail").value;
+            //regular expression to check only alphabets
+            var nameExpression= /^[A-Za-z]+$/;
+            //regular expression for email
+            var emailExpresson=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            //checking firstName, lastName and email for empty values
+            if(firstName=="" || lastName=="" || email=="")
+            {
+                //if any of the field firstName, lastName and email is empty
+                alert("Enter all fields");
+                return false;//not allow to submit form
+            }
+            else if(!nameExpression.test(firstName))
+            {
+                //if firstName contains number then
+                alert("First name should have letters only");
+                return false;//not allow to submit form
+            }
+            else if(!nameExpression.test(lastName))
+            {
+                //if lastName contains number then
+                alert("Last name should have letters only");
+                return false;//not allow to submit form
+            }
+            else if(!emailExpresson.test(email))
+            {
+                //enter valid email
+                alert("Enter valid email");
+                return false;//not allow to submit form
+            }
+            else{
+                //when all fields are valid then
+                alert("Form submitted successfully");
+            }
+        }
+
+    </script>
+</head>
+<body>
+<form onsubmit="return validate()">
+    First Name :
+    <input type="text" id="txtFirstName"/>
+    <br><br>
+    Last Name :
+    <input type="text" id="txtLastName"/>
+    <br><br>
+    Email :<input type="text" id="txtEmail"/>
+    <br><br>
+    <!-- button to submit form -->
+    <input type="submit"/>
+    <!-- button to reset values -->
+    <input type="reset"/>
+</form>
+</body>
+</html>
